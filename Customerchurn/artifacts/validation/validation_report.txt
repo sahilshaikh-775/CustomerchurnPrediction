@@ -1,0 +1,19 @@
+===== TRAIN =====
+[PASS] All required columns are present
+[PASS] Target values are valid
+[PASS] Unique columns customerID has no duplicates
+[PASS] Numeric column tenure is numeric or convertible
+[PASS] Numeric column MonthlyCharges is numeric or convertible
+[PASS] Numeric column TotalCharges is numeric or convertible
+[PASS] Integer column SeniorCitizen is integer-like
+[PASS] All Categorical Column present
+
+===== TEST =====
+[PASS] All required columns are present
+[PASS] Target values are valid
+[PASS] Unique columns customerID has no duplicates
+[PASS] Numeric column tenure is numeric or convertible
+[PASS] Numeric column MonthlyCharges is numeric or convertible
+[PASS] Numeric column TotalCharges is numeric or convertible
+[PASS] Integer column SeniorCitizen is integer-like
+[PASS] All Categorical Column present

@@ -1,0 +1,163 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Customer Churn Predictor</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 24px; }
+    .grid { display: grid; grid-template-columns: 240px 300px; gap: 10px 16px; max-width: 700px; }
+    label { font-weight: 600; }
+    input, select { padding: 6px; width: 100%; }
+    .btn { margin-top: 16px; padding: 10px 16px; cursor: pointer; }
+    .card { margin-top: 18px; padding: 12px; border: 1px solid #ddd; border-radius: 8px; max-width: 700px; }
+    .err { color: #b00020; }
+    .ok { color: #0a7a0a; }
+  </style>
+</head>
+<body>
+  <h2>Customer Churn Predictor</h2>
+
+  {% if error %}
+    <p class="err"><b>Error:</b> {{ error }}</p>
+  {% endif %}
+
+  <form method="POST">
+    <div class="grid">
+      <label>gender</label>
+      <select name="gender">
+        {% for v in options.gender %}
+          <option value="{{v}}" {% if form_data.gender==v %}selected{% endif %}>{{v}}</option>
+        {% endfor %}
+      </select>
+
+      <label>SeniorCitizen (0/1)</label>
+      <input name="SeniorCitizen" value="{{ form_data.SeniorCitizen }}" />
+
+      <label>Partner</label>
+      <select name="Partner">
+        {% for v in options.Partner %}
+          <option value="{{v}}" {% if form_data.Partner==v %}selected{% endif %}>{{v}}</option>
+        {% endfor %}
+      </select>
+
+      <label>Dependents</label>
+      <select name="Dependents">
+        {% for v in options.Dependents %}
+          <option value="{{v}}" {% if form_data.Dependents==v %}selected{% endif %}>{{v}}</option>
+        {% endfor %}
+      </select>
+
+      <label>tenure</label>
+      <input name="tenure" value="{{ form_data.tenure }}" />
+
+      <label>PhoneService</label>
+      <select name="PhoneService">
+        {% for v in options.PhoneService %}
+          <option value="{{v}}" {% if form_data.PhoneService==v %}selected{% endif %}>{{v}}</option>
+        {% endfor %}
+      </select>
+
+      <label>MultipleLines</label>
+      <select name="MultipleLines">
+        {% for v in options.MultipleLines %}
+          <option value="{{v}}" {% if form_data.MultipleLines==v %}selected{% endif %}>{{v}}</option>
+        {% endfor %}
+      </select>
+
+      <label>InternetService</label>
+      <select name="InternetService">
+        {% for v in options.InternetService %}
+          <option value="{{v}}" {% if form_data.InternetService==v %}selected{% endif %}>{{v}}</option>
+        {% endfor %}
+      </select>
+
+      <label>OnlineSecurity</label>
+      <select name="OnlineSecurity">
+        {% for v in options.OnlineSecurity %}
+          <option value="{{v}}" {% if form_data.OnlineSecurity==v %}selected{% endif %}>{{v}}</option>
+        {% endfor %}
+      </select>
+
+      <label>OnlineBackup</label>
+      <select name="OnlineBackup">
+        {% for v in options.OnlineBackup %}
+          <option value="{{v}}" {% if form_data.OnlineBackup==v %}selected{% endif %}>{{v}}</option>
+        {% endfor %}
+      </select>
+
+      <label>DeviceProtection</label>
+      <select name="DeviceProtection">
+        {% for v in options.DeviceProtection %}
+          <option value="{{v}}" {% if form_data.DeviceProtection==v %}selected{% endif %}>{{v}}</option>
+        {% endfor %}
+      </select>
+
+      <label>TechSupport</label>
+      <select name="TechSupport">
+        {% for v in options.TechSupport %}
+          <option value="{{v}}" {% if form_data.TechSupport==v %}selected{% endif %}>{{v}}</option>
+        {% endfor %}
+      </select>
+
+      <label>StreamingTV</label>
+      <select name="StreamingTV">
+        {% for v in options.StreamingTV %}
+          <option value="{{v}}" {% if form_data.StreamingTV==v %}selected{% endif %}>{{v}}</option>
+        {% endfor %}
+      </select>
+
+      <label>StreamingMovies</label>
+      <select name="StreamingMovies">
+        {% for v in options.StreamingMovies %}
+          <option value="{{v}}" {% if form_data.StreamingMovies==v %}selected{% endif %}>{{v}}</option>
+        {% endfor %}
+      </select>
+
+      <label>Contract</label>
+      <select name="Contract">
+        {% for v in options.Contract %}
+          <option value="{{v}}" {% if form_data.Contract==v %}selected{% endif %}>{{v}}</option>
+        {% endfor %}
+      </select>
+
+      <label>PaperlessBilling</label>
+      <select name="PaperlessBilling">
+        {% for v in options.PaperlessBilling %}
+          <option value="{{v}}" {% if form_data.PaperlessBilling==v %}selected{% endif %}>{{v}}</option>
+        {% endfor %}
+      </select>
+
+      <label>PaymentMethod</label>
+      <select name="PaymentMethod">
+        {% for v in options.PaymentMethod %}
+          <option value="{{v}}" {% if form_data.PaymentMethod==v %}selected{% endif %}>{{v}}</option>
+        {% endfor %}
+      </select>
+
+      <label>MonthlyCharges</label>
+      <input name="MonthlyCharges" value="{{ form_data.MonthlyCharges }}" />
+
+      <label>TotalCharges</label>
+      <input name="TotalCharges" value="{{ form_data.TotalCharges }}" />
+    </div>
+
+    <button class="btn" type="submit">Predict</button>
+  </form>
+
+  {% if result %}
+    <div class="card">
+      <h3>Prediction Result</h3>
+      <p><b>Churn probability:</b> {{ result.churn_probability }}</p>
+      <p><b>Threshold used:</b> {{ result.threshold_used }}</p>
+      <p>
+        <b>Prediction:</b>
+        {% if result.churn_prediction in [1, "Yes"] %}
+          <span class="err"><b>YES (Likely to churn)</b></span>
+        {% else %}
+          <span class="ok"><b>NO (Likely to stay)</b></span>
+        {% endif %}
+      </p>
+    </div>
+  {% endif %}
+</body>
+</html>

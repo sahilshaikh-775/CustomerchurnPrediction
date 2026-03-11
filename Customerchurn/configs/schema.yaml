@@ -1,0 +1,56 @@
+dataset: Telco-Customer-Churn
+
+required_columns:
+  - customerID
+  - gender
+  - SeniorCitizen
+  - Partner
+  - Dependents
+  - tenure
+  - PhoneService
+  - MultipleLines
+  - InternetService
+  - OnlineSecurity
+  - OnlineBackup
+  - DeviceProtection
+  - TechSupport
+  - StreamingTV
+  - StreamingMovies
+  - Contract
+  - PaperlessBilling
+  - PaymentMethod
+  - MonthlyCharges
+  - TotalCharges
+  - Churn
+
+target_column: Churn
+target_allowed_values: ["Yes", "No"]
+
+unique_columns:
+  - customerID
+
+numeric_columns:
+  - tenure
+  - MonthlyCharges
+  - TotalCharges
+
+integer_columns:
+  - SeniorCitizen
+
+categorical_columns:
+  - gender
+  - Partner
+  - Dependents
+  - PhoneService
+  - MultipleLines
+  - InternetService
+  - OnlineSecurity
+  - OnlineBackup
+  - DeviceProtection
+  - TechSupport
+  - StreamingTV
+  - StreamingMovies
+  - Contract
+  - PaperlessBilling
+  - PaymentMethod
+  - Churn

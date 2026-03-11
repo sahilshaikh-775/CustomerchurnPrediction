@@ -1,0 +1,20 @@
+{
+  "best_model": "grad_boost",
+  "chosen_by": "cv_pr_auc",
+  "best_threshold_from_cv": 0.35,
+  "test_metrics": {
+    "roc_auc": 0.8406145857552508,
+    "pr_auc": 0.6562549238032,
+    "threshold": 0.35,
+    "f1": 0.6288416075650118,
+    "precision": 0.5635593220338984,
+    "recall": 0.7112299465240641,
+    "confusion_matrix": {
+      "tn": 829,
+      "fp": 206,
+      "fn": 108,
+      "tp": 266
+    }
+  },
+  "leaderboard_path": "artifacts\\metrics\\leaderboard.csv"
+}
